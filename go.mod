@@ -14,7 +14,7 @@ replace k8s.io/client-go => k8s.io/client-go v0.22.1
 require (
 	cloud.google.com/go/storage v1.14.0
 	cuelang.org/go v0.3.2
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v0.19.0
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v0.21.1
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v0.10.0
 	github.com/BurntSushi/toml v0.3.1
 	github.com/Masterminds/semver v1.5.0
@@ -122,7 +122,7 @@ require (
 
 require (
 	cloud.google.com/go v0.90.0 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/internal v0.7.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/internal v0.8.3 // indirect
 	github.com/FZambia/eagle v0.0.1 // indirect
 	github.com/FZambia/sentinel v1.1.0 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
