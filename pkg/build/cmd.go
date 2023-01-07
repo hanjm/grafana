@@ -135,6 +135,9 @@ func setup(goos string) {
 
 func doBuild(binaryName, pkg string, opts BuildOpts) error {
 	log.Println("building", binaryName, pkg)
+	if err := setBuildEnv(opts); err != nil {
+		return err
+	}
 	libcPart := ""
 	if opts.libc != "" {
 		libcPart = fmt.Sprintf("-%s", opts.libc)
@@ -183,9 +186,6 @@ func doBuild(binaryName, pkg string, opts BuildOpts) error {
 		return nil
 	}
 
-	if err := setBuildEnv(opts); err != nil {
-		return err
-	}
 	runPrint("go", "version")
 	libcPart = ""
 	if opts.libc != "" {

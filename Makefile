@@ -160,6 +160,9 @@ build-docker-full-ubuntu: ## Build Docker image based on Ubuntu for development.
 	@echo "build docker container"
 	docker build --tag grafana/grafana:dev-ubuntu -f ./Dockerfile.ubuntu .
 
+build-docker-local:
+	make build-js
+	docker buildx build --platform linux/amd64 --tag grafana/grafana:9.3.1-local -f ./Dockerfile.local .
 
 ##@ Services
 
