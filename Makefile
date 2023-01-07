@@ -175,6 +175,11 @@ build-docker-full-ubuntu: ## Build Docker image based on Ubuntu for development.
 	--build-arg BASE_IMAGE=ubuntu:20.04 \
 	--build-arg GO_IMAGE=golang:1.19.4 \
 	--tag grafana/grafana:dev-ubuntu .
+	docker build --tag grafana/grafana:dev-ubuntu -f ./Dockerfile.ubuntu .
+
+build-docker-local:
+	make build-js
+	docker buildx build --platform linux/amd64 --tag grafana/grafana:9.4.0-beta1-local -f ./Dockerfile.local .
 
 ##@ Services
 

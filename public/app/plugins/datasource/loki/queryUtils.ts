@@ -159,7 +159,7 @@ export function isLogsQuery(query: string): boolean {
       }
     },
   });
-  return isLogsQuery;
+  return true;
 }
 
 export function isQueryWithParser(query: string): { queryWithParser: boolean; parserCount: number } {
