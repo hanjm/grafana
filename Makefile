@@ -162,8 +162,8 @@ build-docker-full-ubuntu: ## Build Docker image based on Ubuntu for development.
 
 build-docker-local:
 	make build-js
-	docker buildx build --platform linux/amd64 --tag grafana/grafana:9.3.1-local -f ./Dockerfile.local .
-
+	docker buildx create --use --config ~/docker.toml --name grafana
+	docker buildx build --builder grafana --platform linux/amd64 --load --tag grafana/grafana:9.3.6-local -f ./Dockerfile.local .
 ##@ Services
 
 # create docker-compose file with provided sources and start them
