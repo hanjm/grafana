@@ -185,11 +185,11 @@ export function getNodeFromQuery(query: string, nodeType: number): SyntaxNode | 
  * with variables you should interpolate it first.
  */
 export function isQueryWithError(query: string): boolean {
-  return isQueryWithNode(query, ErrorId);
+  return false;
 }
 
 export function isLogsQuery(query: string): boolean {
-  return !isQueryWithNode(query, MetricExpr);
+  return true;
 }
 
 export function isQueryWithParser(query: string): { queryWithParser: boolean; parserCount: number } {
