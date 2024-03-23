@@ -260,6 +260,26 @@ build-docker-full-ubuntu: ## Build Docker image based on Ubuntu for development.
 	--tag grafana/grafana$(TAG_SUFFIX):dev-ubuntu \
 	$(DOCKER_BUILD_ARGS)
 
+build-docker-local-v1: ## Build Docker image based on Ubuntu for local.
+	@echo "build docker container"
+	tar -ch . | \
+	docker buildx build - \
+	--platform $(PLATFORM) \
+	--build-arg BINGO=false \
+	--build-arg GO_BUILD_TAGS=$(GO_BUILD_TAGS) \
+	--build-arg WIRE_TAGS=$(WIRE_TAGS) \
+	--build-arg COMMIT_SHA=$$(git rev-parse --short HEAD) \
+	--build-arg BUILD_BRANCH=$$(git rev-parse --abbrev-ref HEAD) \
+	--build-arg BASE_IMAGE=ubuntu:20.04 \
+	--build-arg GO_IMAGE=golang:1.20.4 \
+	--tag grafana/grafana:10.0.10-local \
+	$(DOCKER_BUILD_ARGS)
+
+build-docker-local-v2: ## local build js, container build go
+	make build-js
+	-docker buildx create --use --config ~/docker.toml --name grafana
+	docker buildx build --builder grafana --platform linux/amd64 --load --tag grafana/grafana:10.4.1-local -f ./Dockerfile.local .
+
 ##@ Services
 
 # create docker-compose file with provided sources and start them

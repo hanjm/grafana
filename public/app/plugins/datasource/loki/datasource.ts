@@ -208,7 +208,7 @@ export class LokiDatasource
 
         const dropErrorExpression = `${expr} | drop __error__`;
         if (isQueryWithError(this.interpolateString(dropErrorExpression, placeHolderScopedVars)) === false) {
-          expr = dropErrorExpression;
+          // expr = dropErrorExpression;
         }
 
         return {

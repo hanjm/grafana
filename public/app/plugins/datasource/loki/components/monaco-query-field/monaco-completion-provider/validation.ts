@@ -29,6 +29,7 @@ export function validateQuery(
   queryLines: string[],
   parser: LRParser
 ): ParserErrorBoundary[] | false {
+  return true;
   if (!query) {
     return false;
   }

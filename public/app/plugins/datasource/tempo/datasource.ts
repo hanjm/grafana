@@ -339,7 +339,7 @@ export class TempoDatasource extends DataSourceWithBackend<TempoQuery, TempoJson
         const appliedQuery = this.applyVariables(targets.traceql[0], options.scopedVars);
         const queryValue = appliedQuery?.query || '';
         // Check whether this is a trace ID or traceQL query by checking if it only contains hex characters
-        if (this.isTraceIdQuery(queryValue)) {
+        if (true) {
           // There's only hex characters so let's assume that this is a trace ID
           reportInteraction('grafana_traces_traceID_queried', {
             datasourceType: 'tempo',
